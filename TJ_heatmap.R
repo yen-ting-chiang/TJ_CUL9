@@ -2,7 +2,6 @@ setwd("C:/Users/dannyj/Documents/Rproject/TJ_CUL9")
 getwd()
 library(dplyr)
 library(readr)
-library(fread)
 install.packages("read_delim")
 
 filenames <- list.files(pattern="*.tsv", full.names=TRUE)
