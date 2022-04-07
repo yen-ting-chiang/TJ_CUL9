@@ -37,3 +37,29 @@ GO_BP_for_heatmap <- GO_BP_filtered_join_1 %>%
 
 write.csv(GO_BP_for_heatmap, 
           file = "GO_BP_for_heatmap.csv")
+
+
+
+#pheatmap----------------------------------------------------------
+library(pheatmap)
+library(RColorBrewer)
+GO_BP_for_heatmap <- 
+  read.csv(file = "GO_BP_for_heatmap.csv", 
+           header = T)
+GO_BP_for_heatmap_tmp = 
+  GO_BP_for_heatmap[,c(3, 4)]
+row.names(GO_BP_for_heatmap_tmp) = 
+  GO_BP_for_heatmap[,2]
+
+pheatmap(GO_BP_for_heatmap_tmp,
+         color = colorRampPalette(rev(brewer.pal(n = 7, 
+                                                 name = "YlGnBu")))(100),
+         cluster_rows=FALSE, 
+         cluster_cols=FALSE,
+         border_color = NA,
+         na_col = "white",
+         show_rownames = FALSE)
+
+# install.packages("colorRampPalette")
+# install.packages("brewer.pal")
+# install.packages("pheatmap")
